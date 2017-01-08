@@ -88,6 +88,7 @@ def make_full_name(first, last):
     """
     return first + " " + last
 
+
 def greet_local(hometown, first_name, last_name):
     """Greets by full name, according to local or not.
 
@@ -119,11 +120,11 @@ def is_berry(fruit):
 
     return fruit == "strawberry" or fruit == "cherry" or fruit == "blackberry"
 
-
 # (b) Write another function, shipping_cost(), which calculates shipping cost
 #     by taking a fruit name as a string and calling the is_berry() function
 #     within the shipping_cost() function. Your function should return 0 if
 #     is_berry() == True, and 5 if is_berry() == False.
+
 
 def shipping_cost(fruit):
     """Calculates shipping cost of fruit"""
@@ -148,7 +149,6 @@ def append_to_list(lst, num):
 
     lst.append(num)
     return lst
-
 
 
 # 3. Write a function calculate_price to calculate an item's total cost by
@@ -229,7 +229,7 @@ def extend_list(a_list, *args):
 
     for arg in args:
         a_list.append(arg)
-    
+
     return a_list
 
 #2
@@ -241,7 +241,7 @@ def triple_string(word):
     >>> triple_string("Balloonicorn")
     ('Balloonicorn', 'BalloonicornBalloonicornBalloonicorn')
     """
-    def treble(str_word):   
+    def treble(str_word):
         return str_word * 3
 
     string_3 = tuple([word, treble(word)])
