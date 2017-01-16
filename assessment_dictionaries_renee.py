@@ -4,6 +4,7 @@
 dictionaries and sets.
 """
 
+
 def count_words(phrase):
     """Count unique words in a string.
 
@@ -108,6 +109,8 @@ def word_length_sorted(words):
         wlength = len(word)
         if wlength in words_by_length.keys():
             words_by_length[wlength].append(word)
+            # if the given lists were very long, I'd sort them outside the loop
+            # but this seemed like the most elegant solution here.
             words_by_length[wlength].sort()
         else:
             words_by_length[wlength] = [word]
@@ -164,19 +167,19 @@ def translate_to_pirate_talk(phrase):
     """
 
     english_to_pirate = {
-        "sir" :"matey",
-        "hotel" : "fleabag inn",
-        "student" : "swabbie",
-        "man" : "matey",
-        "professor" : "foul blaggart",
-        "restaurant" : "galley",
-        "your" : "yer",
-        "excuse" : "arr",
-        "students" : "swabbies",
-        "are" : "be",
-        "restroom" : "head",
-        "my" : "me",
-        "is" : "be",
+        "sir": "matey",
+        "hotel": "fleabag inn",
+        "student": "swabbie",
+        "man": "matey",
+        "professor": "foul blaggart",
+        "restaurant": "galley",
+        "your": "yer",
+        "excuse": "arr",
+        "students": "swabbies",
+        "are": "be",
+        "restroom": "head",
+        "my": "me",
+        "is": "be",
     }
 
     words = phrase.split()
@@ -236,7 +239,7 @@ def kids_game(names):
     a dictionary (with the super-fast lookup they provide) can help;
     good solutions here will definitely require a dictionary.
     """
-
+    # remove first name from given list, add it as first name in new list
     name_sequence = [names.pop(0)]
     first_letter_for_words = {}
 
@@ -244,18 +247,19 @@ def kids_game(names):
     # in order of appearance in the input list
 
     for name in names:
-        first_letter = name[0]
+        first_letter = name[0].lower()
+
         if first_letter in first_letter_for_words:
-            first_letter_for_words[name[0]].append(name)
+            first_letter_for_words[first_letter].append(name)
         else:
-            first_letter_for_words[name[0]] = [name]
+            first_letter_for_words[first_letter] = [name]
 
     # return last letter of last word of the list passed in.
     # # internal function to clean up code that was getting too murky.
     # # will use below to search for the next word in sequence.
 
     def last_letter(word_list):
-        return word_list[-1][-1]
+        return word_list[-1][-1].lower()
 
     # keep grabbing the next available word from the list value in dict,
     # where key = last letter of last word in the sequence so far,
